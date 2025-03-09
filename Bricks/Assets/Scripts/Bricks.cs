@@ -6,6 +6,7 @@ public class Bricks : MonoBehaviour
 {
     [SerializeField] GameObject _gameobject;
     [SerializeField] Vector3 _grid;
+    Mesh _currentMesh;
     Color _currentColor;
     Material _material;
     bool _isPlaced;
@@ -27,6 +28,12 @@ public class Bricks : MonoBehaviour
         set { _currentColor = value; }
     }
 
+    public Mesh CurrentMesh
+    {
+        get { return _currentMesh; }
+        set { _currentMesh = value; }
+    }
+
     void Start()
     {
         _currentColor = Color.white;
@@ -41,7 +48,8 @@ public class Bricks : MonoBehaviour
         if(_isPlaced == true) { return; }
 
         _material.SetColor("_BaseColor", _currentColor);
-
+        MeshFilter mf = _gameobject.GetComponent<MeshFilter>();
+        mf.mesh = _currentMesh;
         if (Input.GetKeyDown(KeyCode.D))
         {
             _gameobject.transform.position += new Vector3(_grid.x, 0.0f, 0.0f);
