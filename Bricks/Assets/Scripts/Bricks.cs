@@ -1,10 +1,13 @@
 using UnityEngine;
 using UnityEngine.UIElements;
+using static System.Net.WebRequestMethods;
 
 public class Bricks : MonoBehaviour
 {
     [SerializeField] GameObject _gameobject;
     [SerializeField] Vector3 _grid;
+    Color _currentColor;
+    Material _material;
     bool _isPlaced;
     public bool IsPlaced
     {
@@ -18,16 +21,26 @@ public class Bricks : MonoBehaviour
         set { _grid = value; }
     }
 
+    public Color CurrentColor
+    {
+        get { return _currentColor; }
+        set { _currentColor = value; }
+    }
+
     void Start()
     {
+        _currentColor = Color.white;
         _isPlaced = false;
-        _gameobject.GetComponent<Renderer>().material.shader = Shader.Find("Shader Graphs/Unplaced Brick");
+        _material = _gameobject.GetComponent<Renderer>().material;
+        _material.shader = Shader.Find("Shader Graphs/Unplaced Brick");
     }
 
     // Update is called once per frame
     void Update()
     {
         if(_isPlaced == true) { return; }
+
+        _material.SetColor("_BaseColor", _currentColor);
 
         if (Input.GetKeyDown(KeyCode.D))
         {
@@ -37,7 +50,6 @@ public class Bricks : MonoBehaviour
         {
             _gameobject.transform.position += new Vector3(- _grid.x, 0.0f, 0.0f);
         }
-
 
         if (Input.GetKeyDown(KeyCode.S))
         {
