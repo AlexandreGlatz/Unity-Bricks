@@ -407,6 +407,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _brickPrefab: {fileID: 5899790377476051607, guid: de071f1d98e178e468db1dd5493d7675, type: 3}
+  _meshes:
+  - {fileID: -7387706064836869012, guid: 62a5acfd406db594abe5689b45deb9b8, type: 3}
+  - {fileID: -7387706064836869012, guid: 2b359c9d5b81de9469766d1176bd118f, type: 3}
 --- !u!4 &548167044
 Transform:
   m_ObjectHideFlags: 0
@@ -480,6 +483,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2025805759}
+  - component: {fileID: 2025805760}
   m_Layer: 0
   m_Name: Isometric Camera
   m_TagString: Untagged
@@ -503,6 +507,19 @@ Transform:
   - {fileID: 330585546}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2025805760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2025805758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3663979cc6cdf2c4385909893ded3641, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rotationSpeed: 500
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
