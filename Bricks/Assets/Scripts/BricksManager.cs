@@ -4,6 +4,7 @@ public class BricksManager : MonoBehaviour
 {
     [SerializeField] GameObject _brickPrefab;
     [SerializeField] Mesh[] _meshes;
+    [SerializeField] AudioSource _audioSource;
 
     Color[] _palette = { Color.white, Color.red, Color.blue, Color.green, Color.yellow };
     
@@ -37,6 +38,8 @@ public class BricksManager : MonoBehaviour
             _currentY = _currentBrick.transform.position.y + brick.Grid.y;
             _currentBrick = Instantiate(_brickPrefab, new Vector3(_currentBrick.transform.position.x, _currentY, _currentBrick.transform.position.z), Quaternion.identity);
             _currentBrick.GetComponent<Bricks>().CurrentMesh = _meshes[0];
+
+            _audioSource.Play();
         }
 
         if(Input.GetKeyDown(KeyCode.I)) 
